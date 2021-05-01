@@ -34,7 +34,7 @@ from pdm.project import Project
 from pdm.resolver import resolve
 from pdm.utils import setdefault
 
-PEP582_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "pep582")
+PEP582_PATH = Path(__file__).parent.parent / "pep582"
 
 
 def do_lock(
@@ -538,7 +538,7 @@ def print_pep582_command(ui: termui.UI, shell: str = "AUTO"):
 
     if os.name == "nt":
         try:
-            set_env_in_reg("PYTHONPATH", PEP582_PATH)
+            set_env_in_reg("PYTHONPATH", str(PEP582_PATH))
         except PermissionError:
             ui.echo(
                 termui.red(
@@ -553,7 +553,7 @@ def print_pep582_command(ui: termui.UI, shell: str = "AUTO"):
             )
         )
         return
-    lib_path = PEP582_PATH.replace("'", "\\'")
+    lib_path = str(PEP582_PATH).replace("'", "\\'")
     if shell == "AUTO":
         shell = shellingham.detect_shell()[0]
     shell = shell.lower()
