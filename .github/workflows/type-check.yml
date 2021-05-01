@@ -18,5 +18,6 @@ on:
 
 jobs:
   type-check:
+    runs-on: ubuntu-latest
     steps:
       - uses: jpetrucciani/mypy-check@master
