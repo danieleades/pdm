@@ -19,4 +19,4 @@ on:
 jobs:
   type-check:
     steps:
-      uses: jpetrucciani/mypy-check@master
+      - uses: jpetrucciani/mypy-check@master
