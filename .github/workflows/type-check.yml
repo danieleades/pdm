@@ -1,0 +1,21 @@
+name: Type Check
+
+on:
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "news/**"
+      - "*.md"
+      - Dockerfile
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "docs/**"
+      - "news/**"
+      - "*.md"
+      - Dockerfile
+
+jobs:
+  type-check:
+    uses: jpetrucciani/mypy-check@master
