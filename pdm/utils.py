@@ -330,8 +330,8 @@ def temp_environ() -> Iterator:
 @contextmanager
 def open_file(url: str, session: Optional[Session] = None) -> Iterator[Session]:
     if url.startswith("file://"):
-        local_path = url_to_path(url)
-        if os.path.isdir(local_path):
+        local_path = Path(url_to_path(url))
+        if local_path.is_dir():
             raise ValueError("Cannot open directory for read: {}".format(url))
         else:
             with open(local_path, "rb") as local_file:
