@@ -22,4 +22,4 @@ jobs:
     steps:
       - uses: jpetrucciani/mypy-check@master
         with:
-          path: 'pdm'
+          path: 'pdm/*'
