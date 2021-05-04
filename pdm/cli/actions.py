@@ -471,7 +471,7 @@ def do_import(
     """
     if not format:
         for key in FORMATS:
-            if FORMATS[key].check_fingerprint(project, filename):
+            if FORMATS[key].check_fingerprint(filename):
                 break
         else:
             raise PdmUsageError(
@@ -632,7 +632,7 @@ def migrate_pyproject(project: Project):
         return
 
     if not project.pyproject_file.exists() or not FORMATS["legacy"].check_fingerprint(
-        project, project.pyproject_file
+        project.pyproject_file
     ):
         return
 
