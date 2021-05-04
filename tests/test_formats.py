@@ -7,7 +7,7 @@ from tests import FIXTURES
 
 def test_convert_pipfile(project):
     golden_file = FIXTURES / "Pipfile"
-    assert pipfile.check_fingerprint(project, golden_file)
+    assert pipfile.check_fingerprint(golden_file)
     result, settings = pipfile.convert(project, golden_file, None)
 
     assert settings["allow_prereleases"]
@@ -23,7 +23,7 @@ def test_convert_pipfile(project):
 
 def test_convert_requirements_file(project, is_dev):
     golden_file = FIXTURES / "requirements.txt"
-    assert requirements.check_fingerprint(project, golden_file)
+    assert requirements.check_fingerprint(golden_file)
     options = Namespace(dev=is_dev, section=None)
     result, settings = requirements.convert(project, golden_file, options)
     section = settings["dev-dependencies"]["dev"] if is_dev else result["dependencies"]
@@ -39,7 +39,7 @@ def test_convert_requirements_file_without_name(project, vcs):
     project.root.joinpath("reqs.txt").write_text(
         "git+https://github.com/test-root/demo.git\n"
     )
-    assert requirements.check_fingerprint(project, str(req_file))
+    assert requirements.check_fingerprint(str(req_file))
     result, _ = requirements.convert(
         project, str(req_file), Namespace(dev=False, section=None)
     )
@@ -49,7 +49,7 @@ def test_convert_requirements_file_without_name(project, vcs):
 
 def test_convert_poetry(project):
     golden_file = FIXTURES / "pyproject-poetry.toml"
-    assert poetry.check_fingerprint(project, golden_file)
+    assert poetry.check_fingerprint(golden_file)
     with cd(FIXTURES):
         result, settings = poetry.convert(
             project, golden_file, Namespace(dev=False, section=None)
@@ -85,7 +85,7 @@ def test_convert_poetry(project):
 
 def test_convert_flit(project):
     golden_file = FIXTURES / "projects/flit-demo/pyproject.toml"
-    assert flit.check_fingerprint(project, golden_file)
+    assert flit.check_fingerprint(golden_file)
     result, settings = flit.convert(project, golden_file, None)
 
     assert result["name"] == "pyflit"
@@ -121,7 +121,7 @@ def test_convert_flit(project):
 
 def test_convert_legacy_format(project):
     golden_file = FIXTURES / "pyproject-legacy.toml"
-    assert legacy.check_fingerprint(project, golden_file)
+    assert legacy.check_fingerprint(golden_file)
     result, settings = legacy.convert(project, golden_file, None)
 
     assert result["name"] == "demo-package"
@@ -142,7 +142,7 @@ def test_export_setup_py(fixture_project):
 
 def test_import_requirements_with_section(project):
     golden_file = FIXTURES / "requirements.txt"
-    assert requirements.check_fingerprint(project, golden_file)
+    assert requirements.check_fingerprint(golden_file)
     result, _ = requirements.convert(
         project, golden_file, Namespace(dev=False, section="test")
     )

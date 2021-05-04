@@ -19,7 +19,7 @@ from pdm.project import Project
 from pdm.utils import cd
 
 
-def check_fingerprint(project: Optional[Project], filename: PathLike) -> bool:
+def check_fingerprint(filename: PathLike) -> bool:
     with open(filename, encoding="utf-8") as fp:
         try:
             data = toml.load(fp)
@@ -141,7 +141,7 @@ class FlitMetaConverter(MetaConverter):
 
 
 def convert(
-    project: Optional[Project], filename: PathLike, options: Optional[Namespace]
+    project: Optional[Project], filename: PathLike, _options: Optional[Namespace]
 ) -> Tuple[Mapping, Mapping]:
     with open(filename, encoding="utf-8") as fp, cd(
         os.path.dirname(os.path.abspath(filename))

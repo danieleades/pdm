@@ -38,7 +38,7 @@ class Command(BaseCommand):
         config = project.project_config if options.local else project.global_config
         config[options.key] = options.value
 
-    def _list_config(self, project: Project, options: argparse.Namespace) -> None:
+    def _list_config(self, project: Project, _options: argparse.Namespace) -> None:
         ui = project.core.ui
         ui.echo("Home configuration ({}):".format(project.global_config._config_file))
         with ui.indent("  "):

@@ -16,7 +16,7 @@ class MutableMetadata(Metadata, MutableMapping):
             return super()._read_pyproject()
         except ValueError:
             for converter in (poetry, flit):
-                if converter.check_fingerprint(None, self.filepath):
+                if converter.check_fingerprint(self.filepath):
                     data, settings = converter.convert(None, self.filepath, None)
                     self._metadata = dict(data)
                     self._tool_settings = settings

@@ -14,7 +14,7 @@ _T = TypeVar("_T", Candidate, Requirement)
 
 
 class _Format(Protocol):
-    def check_fingerprint(self, project: Optional[Project], filename: PathLike) -> bool:
+    def check_fingerprint(self, filename: PathLike) -> bool:
         ...
 
     def convert(

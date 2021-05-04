@@ -35,12 +35,12 @@ def convert_pipfile_requirement(name: str, req: RequirementDict) -> str:
     return Requirement.from_req_dict(name, req).as_line()
 
 
-def check_fingerprint(project: Project, filename: PathLike) -> bool:
+def check_fingerprint(filename: PathLike) -> bool:
     return os.path.basename(filename) == "Pipfile"
 
 
 def convert(
-    project: Project, filename: PathLike, options: Optional[Namespace]
+    _project: Project, filename: PathLike, _options: Optional[Namespace]
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     with open(filename, encoding="utf-8") as fp:
         data = toml.load(fp)

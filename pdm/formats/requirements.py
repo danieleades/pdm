@@ -81,7 +81,7 @@ def parse_requirement_file(
     return ireqs, finder
 
 
-def check_fingerprint(project: Project, filename: PathLike) -> bool:
+def check_fingerprint(filename: PathLike) -> bool:
     import tomlkit
 
     with open(filename, encoding="utf-8") as fp:
