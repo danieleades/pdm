@@ -107,9 +107,9 @@ class Core:
     def main(
         self,
         args: List[str] = None,
-        prog_name: str = None,
+        _prog_name: str = None,
         obj: Optional[Project] = None,
-        **extra: Any,
+        **_extra: Any,
     ) -> None:
         """The main entry function"""
         from pdm.models.pip_shims import global_tempdir_manager

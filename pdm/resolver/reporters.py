@@ -36,7 +36,7 @@ class SpinnerReporter(BaseReporter):
         for req in self.requirements:
             logger.info("\t" + req.as_line())
 
-    def ending_round(self, index: int, state: State) -> None:
+    def ending_round(self, index: int, _state: State) -> None:
         """Called before each round of resolution ends.
 
         This is NOT called if the resolution ends at this round. Use `ending`

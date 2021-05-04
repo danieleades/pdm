@@ -145,7 +145,7 @@ class Environment:
             misc.normalize_path(self.packages_path.as_posix())
         )
 
-    def evaluate_marker(self, text: str, extra: Any = None) -> bool:
+    def evaluate_marker(self, text: str, _extra: Any = None) -> bool:
         marker = packaging.markers.Marker(text)
         return marker.evaluate(self.marker_environment)
 

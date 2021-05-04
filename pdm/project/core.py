@@ -346,7 +346,7 @@ class Project:
     def get_reporter(
         self,
         requirements: List[Requirement],
-        tracked_names: Optional[Iterable[str]] = None,
+        _tracked_names: Optional[Iterable[str]] = None,
         spinner: Optional[halo.Halo] = None,
     ) -> BaseReporter:
         """Return the reporter object to construct a resolver.

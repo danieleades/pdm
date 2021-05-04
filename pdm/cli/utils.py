@@ -311,7 +311,7 @@ def format_dependency_graph(project: Project, graph: DirectedGraph) -> str:
     return "".join(content).strip()
 
 
-def format_reverse_dependency_graph(project: Project, graph: DirectedGraph) -> str:
+def format_reverse_dependency_graph(_project: Project, graph: DirectedGraph) -> str:
     """Format reverse dependency graph for output."""
     leaf_nodes = sorted(
         (node for node in graph._vertices if not list(graph.iter_children(node))),

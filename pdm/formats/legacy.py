@@ -19,7 +19,7 @@ from pdm.models.requirements import Requirement
 from pdm.project.core import Project
 
 
-def check_fingerprint(project: Project, filename: PathLike) -> bool:
+def check_fingerprint(filename: PathLike) -> bool:
     with open(filename, encoding="utf-8") as fp:
         try:
             data = toml.load(fp)
@@ -164,7 +164,7 @@ class LegacyMetaConverter(MetaConverter):
 
 
 def convert(
-    project: Project, filename: Path, options: Optional[Namespace]
+    project: Project, filename: Path, _options: Optional[Namespace]
 ) -> Tuple[Mapping[str, Any], Mapping[str, Any]]:
     with open(filename, encoding="utf-8") as fp:
         converter = LegacyMetaConverter(toml.load(fp)["tool"]["pdm"], project.core.ui)

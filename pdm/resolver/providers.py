@@ -32,9 +32,9 @@ class BaseProvider(AbstractProvider):
     def get_preference(
         self,
         identifier: str,
-        resolutions: Dict[str, Candidate],
+        _resolutions: Dict[str, Candidate],
         candidates: Dict[str, Iterator[Candidate]],
-        information: Dict[str, Iterator[RequirementInformation]],
+        _information: Dict[str, Iterator[RequirementInformation]],
     ) -> int:
         return sum(1 for _ in candidates[identifier])
 

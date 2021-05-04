@@ -168,12 +168,12 @@ def join_list_with(items: List[Any], sep: Any) -> List[Any]:
     return new_items[:-1]
 
 
-def _wheel_supported(self: Any, tags: List[Tag] = None) -> bool:
+def _wheel_supported(_self: Any, _tags: List[Tag] = None) -> bool:
     # Ignore current platform. Support everything.
     return True
 
 
-def _wheel_support_index_min(self: Any, tags: Optional[str] = None) -> int:
+def _wheel_support_index_min(_self: Any, _tags: Optional[str] = None) -> int:
     # All wheels are equal priority for sorting.
     return 0
 

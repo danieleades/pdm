@@ -243,7 +243,7 @@ class FileRequirement(Requirement):
         return result
 
     @classmethod
-    def parse(cls, line: str, parsed: Dict[str, str]) -> "FileRequirement":
+    def parse(cls, _line: str, parsed: Dict[str, str]) -> "FileRequirement":
         extras = parsed.get("extras")
         if extras:
             extras = tuple(e.strip() for e in extras[1:-1].split(","))
@@ -326,7 +326,7 @@ class FileRequirement(Requirement):
 class NamedRequirement(Requirement, PackageRequirement):
     @classmethod
     def parse(
-        cls, line: str, parsed: Optional[Dict[str, Optional[str]]] = None
+        cls, line: str, _parsed: Optional[Dict[str, Optional[str]]] = None
     ) -> "NamedRequirement":
         r = cls()
         try:
@@ -349,7 +349,7 @@ class VcsRequirement(FileRequirement):
         super().__init__(**kwargs)
 
     @classmethod
-    def parse(cls, line: str, parsed: Dict[str, str]) -> "VcsRequirement":
+    def parse(cls, _line: str, parsed: Dict[str, str]) -> "VcsRequirement":
         return cls(
             url=parsed.get("url"), vcs=parsed.get("vcs"), marker=parsed.get("marker")
         )

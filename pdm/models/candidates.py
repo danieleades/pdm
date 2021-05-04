@@ -46,7 +46,7 @@ def _patch_version_parsing():
     from packaging.requirements import InvalidRequirement
     from packaging.requirements import Requirement as PRequirement
 
-    def is_valid_matcher(self: Any, s: str) -> bool:
+    def is_valid_matcher(_self: Any, s: str) -> bool:
         try:
             PRequirement(s)
         except InvalidRequirement:

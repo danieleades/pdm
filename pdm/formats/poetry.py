@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 from pdm.utils import cd
 
 
-def check_fingerprint(project: Optional[Project], filename: PathLike) -> bool:
+def check_fingerprint(filename: PathLike) -> bool:
     with open(filename, encoding="utf-8") as fp:
         try:
             data = toml.load(fp)
@@ -196,7 +196,7 @@ class PoetryMetaConverter(MetaConverter):
 def convert(
     project: Optional[Project],
     filename: PathLike,
-    options: Optional[Namespace],
+    _options: Optional[Namespace],
 ) -> Tuple[Mapping[str, Any], Mapping[str, Any]]:
     with open(filename, encoding="utf-8") as fp, cd(
         os.path.dirname(os.path.abspath(filename))
